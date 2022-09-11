@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c782d7f-ddf7-44c2-b6a7-ae12c9ac76d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/ntp_example.py" afterDir="false" />
+    <list default="true" id="8c782d7f-ddf7-44c2-b6a7-ae12c9ac76d4" name="Changes" comment="Figuring out LEDs and uasyncio">
+      <change afterPath="$PROJECT_DIR$/stubs/ntptime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rasberry-pico-clock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rasberry-pico-clock.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662846382171</updated>
       <workItem from="1662846386653" duration="19293000" />
-      <workItem from="1662902125652" duration="10482000" />
+      <workItem from="1662902125652" duration="18948000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup">
       <created>1662847795399</created>
@@ -106,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662847795399</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Figuring out LEDs and uasyncio">
+      <created>1662921722422</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662921722422</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +124,8 @@
       <path value="$PROJECT_DIR$/all-stubs/micropython-stubs" />
     </ignored-roots>
     <MESSAGE value="Initial setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial setup" />
+    <MESSAGE value="Figuring out LEDs and uasyncio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Figuring out LEDs and uasyncio" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

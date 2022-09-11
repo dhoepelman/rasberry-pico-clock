@@ -16,6 +16,10 @@
         <list>
           <option value="dict.__getitem__" />
           <option value="dict.__setitem__" />
+          <option value="str.__mul__" />
+          <option value="int.__mul__" />
+          <option value="int.__add__" />
+          <option value="int.__neg__" />
         </list>
       </option>
     </inspection_tool>
