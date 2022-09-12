@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c782d7f-ddf7-44c2-b6a7-ae12c9ac76d4" name="Changes" comment="Figuring out LEDs and uasyncio">
-      <change afterPath="$PROJECT_DIR$/stubs/ntptime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="8c782d7f-ddf7-44c2-b6a7-ae12c9ac76d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662846382171</updated>
       <workItem from="1662846386653" duration="19293000" />
-      <workItem from="1662902125652" duration="18948000" />
+      <workItem from="1662902125652" duration="19189000" />
     </task>
     <task id="LOCAL-00001" summary="Initial setup">
       <created>1662847795399</created>
@@ -111,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662921722422</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Set time using NTP">
+      <created>1662935610591</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662935610591</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +128,8 @@
     </ignored-roots>
     <MESSAGE value="Initial setup" />
     <MESSAGE value="Figuring out LEDs and uasyncio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Figuring out LEDs and uasyncio" />
+    <MESSAGE value="Set time using NTP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set time using NTP" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

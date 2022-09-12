@@ -151,16 +151,18 @@ async def ntp_sync(counter: int = 0) -> bool:
     offset = TZ_OFFSET_DST if is_dst(gmt) else TZ_OFFSET_NORMAL
 
     year, month, day, hour, minute, second, dow, doy = gmt
-    # TODO: Leap years and year overflow
-    # Is fine for now since we sync regularly
     new_hour = (hour + offset) % 24
     if new_hour < hour:
         day += 1
+        # Leap years not fully accurate but good enough
         if day > 31 or \
                 (day > 30 and (month == 4 or month == 6 or month == 9 or month == 11)) or \
-                (day > 28 and month == 2):
+                (month == 2 and ((year % 4) == 0 and day > 29) or ((year % 4) != 0 and day > 28)):
             month += 1
             day = 1
+    if month > 12:
+        month = 1
+        year += 1
 
     rtc = RTC()
     new_datetime = (year, month, day, dow, new_hour, minute, second, 0)
