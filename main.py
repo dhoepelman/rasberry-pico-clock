@@ -30,7 +30,7 @@ WLAN_STAT_GOT_IP = 3
 
 last_sync_attempt = None
 led = Pin('LED', Pin.OUT)
-led_timer: Task | None = None
+led_timer: Task = None
 
 #########
 # LED
@@ -43,16 +43,22 @@ led_periods = {
 }
 
 
+def led_value(value: bool = True) -> None:
+    global led_timer
+    if led_timer is not None:
+        led_timer.cancel()
+        led_timer = None
+    led.value(value)
+
+
 def led_blink(period_name: str) -> None:
     global led_timer
     period = led_periods[period_name]
     print(f"LED\t- {period_name}\t- {period}ms")
 
-    if led_timer is not None:
-        led_timer.cancel()
+    led_value(False)
 
     async def blink():
-        led.off()
         while True:
             await sleep_ms(period)
             led.toggle()
@@ -60,13 +66,6 @@ def led_blink(period_name: str) -> None:
     led_timer = create_task(blink())
 
 
-def led_on() -> None:
-    global led_timer
-    if led_timer is not None:
-        led_timer.cancel()
-        led_timer = None
-
-    led.on()
 
 
 #########
@@ -133,6 +132,24 @@ def is_dst(gmt: datetime) -> bool:
         return day < day_end or (day == day_end and hour < 1)
 
 
+def gmt_to_local(gmt: datetime, offset: int) -> datetime:
+    year, month, day, hour, minute, second, dow, doy = gmt
+    new_hour = (hour + offset) % 24
+    if new_hour < hour:
+        day += 1
+        # Leap years not fully accurate but good enough
+        if day > 31 or \
+                (day > 30 and (month == 4 or month == 6 or month == 9 or month == 11)) or \
+                (month == 2 and ((year % 4) == 0 and day > 29) or ((year % 4) != 0 and day > 28)):
+            month += 1
+            day = 1
+    if month > 12:
+        month = 1
+        year += 1
+
+    return year, month, day, new_hour, minute, second, 0, 0
+
+
 async def ntp_sync(counter: int = 0) -> bool:
     print(f"Time before NTP sync: {time.localtime()}")
     try:
@@ -148,25 +165,11 @@ async def ntp_sync(counter: int = 0) -> bool:
 
     gmt = time.localtime()
     print(f"UTC after NTP sync: {gmt}")
-    offset = TZ_OFFSET_DST if is_dst(gmt) else TZ_OFFSET_NORMAL
-
-    year, month, day, hour, minute, second, dow, doy = gmt
-    new_hour = (hour + offset) % 24
-    if new_hour < hour:
-        day += 1
-        # Leap years not fully accurate but good enough
-        if day > 31 or \
-                (day > 30 and (month == 4 or month == 6 or month == 9 or month == 11)) or \
-                (month == 2 and ((year % 4) == 0 and day > 29) or ((year % 4) != 0 and day > 28)):
-            month += 1
-            day = 1
-    if month > 12:
-        month = 1
-        year += 1
 
     rtc = RTC()
-    new_datetime = (year, month, day, dow, new_hour, minute, second, 0)
-    rtc.datetime(new_datetime)
+    offset = TZ_OFFSET_DST if is_dst(gmt) else TZ_OFFSET_NORMAL
+    year, month, day, hour, minute, second, *_ = gmt_to_local(gmt, offset)
+    rtc.datetime((year, month, day, 0, hour, minute, second, 0))
 
     print(f"Time after NTP sync: {time.localtime()}")
 
@@ -191,7 +194,7 @@ async def sync_time():
 
     wlan.disconnect()
     wlan.active(False)
-    led_on()
+    led_value(True)
 
 
 async def main():
@@ -206,4 +209,5 @@ async def main():
         await sleep_ms(500)
 
 
-run(main())
+if __name__ == '__main__':
+    run(main())
